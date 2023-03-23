@@ -5,6 +5,8 @@ const logo = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
 class Project2 extends LitElement {
   static properties = {
     header: { type: String },
+    title: { type: String },
+    description: { type: String },
   }
 
   static styles = css`
@@ -30,6 +32,13 @@ class Project2 extends LitElement {
       margin-top: 36px;
       animation: app-logo-spin infinite 20s linear;
     }
+    .titles {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 0%;
+      left: 0%;
+    }
 
     @keyframes app-logo-spin {
       from {
@@ -52,13 +61,19 @@ class Project2 extends LitElement {
 
   constructor() {
     super();
-    this.header = 'My app';
+    this.header = 'Penn State Digital Badges';
+    this.title = 'Explore';
+    this.description = 'Description';
   }
 
   render() {
     return html`
       <main>
-        
+        <div class="titles">
+        <h3>${this.header}</h3>
+        <h1>${this.title}</h1>
+        <p>${this.description}</p>
+        </div>
       </main>
     `;
   }
