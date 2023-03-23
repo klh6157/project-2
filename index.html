@@ -15,14 +15,65 @@
       font-family: sans-serif;
       background-color: #ededed;
     }
+    div {
+      margin: 20px;
+      padding: 16px;
+    }
+    input {
+      font-size: 20px;
+      font-weight: bold;
+      border: none;
+      border-bottom: 1px solid #000;
+      transition: all 0.3s ease-in-out;
+    }
+    input:focus {
+      outline: 1px solid grey;
+      border-bottom: 1px solid blue;
+      outline-offset: 4px;
+    }
+    input:hover:not(:focus) {
+      border-bottom: 2px solid grey;
+    }
+    @media (prefers-reduced-motion){
+      input {
+        transition: none;
+      }
+    }
   </style>
   <title>project-2</title>
 </head>
 
 <body>
+  <input type="text" id="getme" placeholder="Search" />
+
+  <div>
+    <label>Search input</label>
+    <div class="input"></div>
+  </div>
+  
+  <div>
+    <label>Search change</label>\
+    <div class="change"></div>
+  </div>
   <project-2></project-2>
 
   <script type="module" src="./src/project-2.js"></script>
+  <script>
+    function dqs(sel) {
+      return document.querySelector(sel);
+    }
+    console.log(dqs('#getme'));
+
+    dqs('#getme').addEventListener('input', (e) => {
+      console.log(e.target);
+      dqs('.input').innerText = e.target.value;
+    });
+
+    dqs('input').addEventListener('change', (e) => {
+      console.log(e.target);
+      dqs('.change').innerText = e.target.value;
+    });
+  </script>
 </body>
 
 </html>
