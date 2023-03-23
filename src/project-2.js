@@ -33,7 +33,6 @@ class Project2 extends LitElement {
       animation: app-logo-spin infinite 20s linear;
     }
     .titles {
-      display: flex;
       flex-direction: column;
       position: absolute;
       top: 0%;
