@@ -11,7 +11,6 @@ class Project2 extends LitElement {
 
   static styles = css`
     :host {
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -23,14 +22,8 @@ class Project2 extends LitElement {
       text-align: center;
       background-color: var(--project-2-background-color);
     }
-
     main {
       flex-grow: 1;
-    }
-
-    .logo {
-      margin-top: 36px;
-      animation: app-logo-spin infinite 20s linear;
     }
     .titles {
       flex-direction: row;
