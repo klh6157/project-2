@@ -22,9 +22,6 @@ class Project2 extends LitElement {
       text-align: center;
       background-color: var(--project-2-background-color);
     }
-    main {
-      flex-grow: 1;
-    }
     .titles {
       flex-direction: row;
       position: absolute;

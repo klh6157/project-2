@@ -18,7 +18,7 @@
     .searchBar {
       display: flex;
       align-items: center;
-      height: 25vh;
+      height: 30vh;
     }
     div {
       margin: 3px;
@@ -76,9 +76,9 @@
       dqs('.input').innerText = e.target.value;
     });
 
-    dqs('input').addEventListener('change', (e) => {
+    dqs('input').addEventListener('output', (e) => {
       console.log(e.target);
-      dqs('.change').innerText = e.target.value;
+      dqs('.output').innerText = e.target.value;
     });
   </script>
 </body>
