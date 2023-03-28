@@ -33,10 +33,24 @@ class Project2 extends LitElement {
       animation: app-logo-spin infinite 20s linear;
     }
     .titles {
-      flex-direction: column;
+      flex-direction: row;
       position: absolute;
-      top: 0%;
-      left: 0%;
+      font-size: 20px;
+      top: 2%;
+      left: 5%;
+    }
+    .titles1 {
+      flex-direction: row;
+      position: absolute;
+      font-size: 20px;
+      top: 8%;
+      left: 5%;
+    }
+    .titles2 {
+      flex-direction: row;
+      position: absolute;
+      top: 20%;
+      left: 8%;
     }
 
     @keyframes app-logo-spin {
@@ -62,16 +76,24 @@ class Project2 extends LitElement {
     super();
     this.header = 'Penn State Digital Badges';
     this.title = 'Explore';
-    this.description = 'Description';
+    this.description = 'The description of the explore';
   }
 
   render() {
     return html`
       <main>
         <div class="titles">
-        <h3>${this.header}</h3>
+        <summary>${this.header}</summary>
+        </div>
+
+        <div class="titles1">
         <h1>${this.title}</h1>
-        <p>${this.description}</p>
+        </div>
+
+        <div class="titles2">
+        <summary>${this.description}</summary>
+        </div>
+
         </div>
       </main>
     `;
