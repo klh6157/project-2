@@ -16,7 +16,8 @@
     "start": "web-dev-server"
   },
   "dependencies": {
-    "@lrnwebcomponents/simple-icon": "^4.1.0",
+    "@lrnwebcomponents/a11y-collapse": "^4.2.0",
+    "@lrnwebcomponents/simple-icon": "^4.2.0",
     "lit": "^2.0.2"
   },
   "devDependencies": {
