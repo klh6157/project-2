@@ -67,28 +67,13 @@
     <div class="output"></div>
   </div>
   
+ 
 <div class="project-2"></div>
-  <search-bar></search-bar>
   <search-bar></search-bar>
 </div>
 
 
   <script type="module" src="./src/search-bar.js"></script>
-  <script>
-    function dqs(sel) {
-      return document.querySelector(sel);
-    }
-    console.log(dqs('#getme'));
-
-    dqs('#getme').addEventListener('input', (e) => {
-      console.log(e.target);
-      dqs('.input').innerText = e.target.value;
-    });
-
-    dqs('input').addEventListener('output', (e) => {
-      console.log(e.target);
-      dqs('.output').innerText = e.target.value;
-    });
   </script>
 </body>
 
