@@ -1,7 +1,8 @@
 import { LitElement, html, css } from 'lit';
 import '@lrnwebcomponents/simple-icon/simple-icon.js';
-import '@lrnwebcomponents/simple-icon/simple-icon.js';
-import '@lrnwebcomponents/a11y-collapse/src/a11y-collapse.js';
+import '@lrnwebcomponents/simple-icon/lib/simple-icons.js';
+
+const logo = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
 
 class Project2 extends LitElement {
   static properties = {
@@ -20,38 +21,16 @@ class Project2 extends LitElement {
 
   static styles = css`
     :host {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      font-size: calc(10px + 2vmin);
       color: #1a2b42;
-      max-width: 960px;
-      margin: 0 auto;
-      text-align: center;
       background-color: var(--project-2-background-color);
     }
     .titles {
       flex-direction: row;
       position: absolute;
       font-size: 20px;
-      top: 2%;
-      left: 5%;
-    }
-    .titles1 {
-      flex-direction: row;
-      position: absolute;
-      font-size: 20px;
       top: 8%;
       left: 5%;
     }
-    .titles2 {
-      flex-direction: row;
-      position: absolute;
-      top: 20%;
-      left: 8%;
-    }
-
     @keyframes app-logo-spin {
       from {
         transform: rotate(0deg);
@@ -132,6 +111,9 @@ class Project2 extends LitElement {
     this.objectStepIcon = 'icon';
     this.objectStepDescription = 'Creating you first lambda function';
     this.objectStepTime = '2.00 hours';
+    this.header = 'star-border';
+    this.title = 'Amazon Web Services Intro';
+    this.description = 'Details about the badge';
   }
 
   render() {
@@ -139,7 +121,9 @@ class Project2 extends LitElement {
       <main>
         
         <div class="titles">
-        <summary>${this.header}</summary>
+          <simple-icon icon="${this.header}"></simple-icon>
+          ${this.title}
+          ${this.description}
         </div>
 
         <div class="titles1">
@@ -178,4 +162,4 @@ class Project2 extends LitElement {
   }
 }
 
-customElements.define('project-2', Project2);
+customElements.define('search-bar', Project2);
