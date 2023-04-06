@@ -22,6 +22,7 @@ class Project2 extends LitElement {
 
   static styles = css`
     :host {
+      display: block;
       color: #1a2b42;
       background-color: var(--project-2-background-color);
     }
@@ -32,6 +33,11 @@ class Project2 extends LitElement {
       top: 8%;
       left: 5%;
     }
+    .search {
+      position: center;
+      border-radius: 5px;
+    }
+
     @keyframes app-logo-spin {
       from {
         transform: rotate(0deg);
@@ -101,9 +107,6 @@ class Project2 extends LitElement {
 
   constructor() {
     super();
-    this.header = 'Penn State Digital Badges';
-    this.title = 'Explore';
-    this.description = 'The description of the explore';
     this.objectHeader = 'Amazon';
     this.objectDescription = 'description for badge';
     this.objectLink = 'https//:google.com/';
@@ -115,17 +118,24 @@ class Project2 extends LitElement {
     this.header = 'star-border';
     this.title = 'Amazon Web Services Intro';
     this.description = 'Details about the badge';
+    this.value = "";
   }
 
   render() {
     return html`
       <main>
         
+      <div class="search">
+       <simple-icon icon="icons:search"></simple-icon>
+       <input type="text" value="${this.value}" @input=${this._handleInput}/>
+        </div>
+
         <div class="titles">
-          <simple-icon icon="${this.header}"></simple-icon>
+          <simple-icon icon="${this.header}"></simple-icon>"
           ${this.title}
           ${this.description}
         </div>
+
         <body>
         <div class="object-container">
           <a11y-collapse icon="add" heading=${this.objectHeader} class="object">
@@ -152,6 +162,14 @@ class Project2 extends LitElement {
       </div>
     </main>
     `;
+  }
+  _handleInput(e) {
+    this.value = e.target.value;
+    this.dispatchEvent(new CustomEvent('search', { 
+      bubbles:true,
+      composed:true,
+      detail: this.value,
+     }));
   }
 }
 
