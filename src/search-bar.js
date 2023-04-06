@@ -51,7 +51,7 @@ class Project2 extends LitElement {
 
     .object-container {
       position: absolute;
-      top: 50%;
+      top: 100%;
       left: 5%;
       width: 90%;
       height: 70%;
