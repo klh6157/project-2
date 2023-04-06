@@ -50,13 +50,6 @@ class Project2 extends LitElement {
       margin-left: 5px;
     }
 
-    .object-container {
-      position: absolute;
-      top: 100%;
-      left: 5%;
-      width: 90%;
-      height: 70%;
-    }
     .object {
       top: 5%;
       left: 5%;
@@ -95,8 +88,8 @@ class Project2 extends LitElement {
     }
     .collapse-container {
       background-color: #fefeff;
-      border-top:  solid;
     }
+
   `;
 
   constructor() {
@@ -127,16 +120,10 @@ class Project2 extends LitElement {
           ${this.description}
         </div>
 
-        <div class="titles1">
-        <h1>${this.title}</h1>
-        </div>
-
-        <div class="titles2">
-        <summary>${this.description}</summary>
-        </div>
         <body>
         <div class="object-container">
-          <a11y-collapse icon="add" heading=${this.objectHeader} class="object">
+          <a11y-collapse icon="add" class="object">
+          <p slot="heading"><simple-icon icon="${this.header}"></simple-icon>${this.objectHeader}</p>
             <div class="collapse-container">
               <div class="description">${this.objectDescription}</div>
               <p></p>
@@ -154,7 +141,6 @@ class Project2 extends LitElement {
               </div>
             </div>
           </a11y-collapse>
-          <simple-icon class ="icon" accent-color="deep-orange" icon="lrn:download"></simple-icon>
         </div>
         </body>
       </div>
