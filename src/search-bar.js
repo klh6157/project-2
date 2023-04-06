@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit';
-import '@lrnwebcomponents/simple-icon/simple-icon.js';
-import '@lrnwebcomponents/simple-icon/lib/simple-icons.js';
-import '@lrnwebcomponents/a11y-collapse/src/a11y-collapse.js';
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/a11y-collapse/src/a11y-collapse.js";
 
 const logo = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
 
@@ -52,7 +52,7 @@ class Project2 extends LitElement {
 
     .object-container {
       position: absolute;
-      top: 100%;
+      top: 50%;
       left: 5%;
       width: 90%;
       height: 70%;
@@ -125,14 +125,6 @@ class Project2 extends LitElement {
           <simple-icon icon="${this.header}"></simple-icon>
           ${this.title}
           ${this.description}
-        </div>
-
-        <div class="titles1">
-        <h1>${this.title}</h1>
-        </div>
-
-        <div class="titles2">
-        <summary>${this.description}</summary>
         </div>
         <body>
         <div class="object-container">
