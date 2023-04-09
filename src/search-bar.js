@@ -2,6 +2,7 @@ import { LitElement, html, css } from 'lit';
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/a11y-collapse/src/a11y-collapse.js";
+import "./search-widget.js";
 
 const logo = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
 
@@ -18,6 +19,7 @@ class Project2 extends LitElement {
     objectStepIcon: { type: String },
     objectStepDescription: { type: String },
     objectStepTime: { type: String },
+    players: { type: Array },
   }
 
   static styles = css`
@@ -36,11 +38,6 @@ class Project2 extends LitElement {
     .search {
       position: center;
       border-radius: 5px;
-    }
-    simple-icon {
-      display: inline-block;
-      --simple-icon-height: 20px;
-      --simple-icon-width: 24px;
     }
 
     @keyframes app-logo-spin {
@@ -123,11 +120,20 @@ class Project2 extends LitElement {
     this.header = 'star-border';
     this.title = 'Amazon Web Services Intro';
     this.description = 'Details about the badge';
-    this.value = "";
+    this.players = [];
+    this.getSearchResults().then((results) => {
+      this.players = results;
+    });
   }
+
+  async _handleSearchEvent(e) {
+    const term = e.detail.value;
+    this.players = await this.getSearchResults(e.detail.value);
+  }
+
   async getSearchResults(value) {
-    const response = await fetch(`https://api.github.com/search/repositories?q=${value}`);
-    const json = await fetch(address).then((response) => {
+    const address = `/api/badgeList?search=${value}`;
+    const results = await fetch(address).then((response) => {
       if (response.ok){
         return response.json();
       }
@@ -136,63 +142,44 @@ class Project2 extends LitElement {
   .then((data) => {
     return data;
   });
-    return results;
-}
-async _handleInput(e) {
-  const term = e.target.value;
-  this.players = await this.getSearchResults(term);
+  return results;
 }
 
-  render() {
-    return html`
-      <main>
-        
-      <div class="search">
-       <simple-icon icon="icons:search"></simple-icon>
-       <input type="text" value="${this.value}" @input=${this._handleInput}/>
-        </div>
-
-        <div class="titles">
-          <simple-icon icon="${this.header}"></simple-icon>"
-          ${this.title}
-          ${this.description}
-        </div>
-
-        <body>
-        <div class="object-container">
-          <a11y-collapse icon="add" heading=${this.objectHeader} class="object">
-            <div class="collapse-container">
-              <div class="description">${this.objectDescription}</div>
-              <p></p>
-              <a href=${this.objectLink} class="link">link to badge</a>
-              <p></p>
-              <p></p>
-              <p>---------------------------</p>
-              <div class="badge-creator">${this.objectBadgeCreator}</div>
-              <div class="time-eta">${this.objectTimeETA}</div>
-              <div>Steps to Earn This Badge</div>
-              <div class="steps">
-                <div class="step-icon">Icon</div>
-                <div class="step-description">${this.objectStepDescription}</div>
-                <div class="step-time">${this.objectStepTime}</div>
-              </div>
-            </div>
-          </a11y-collapse>
-          <simple-icon class ="icon" accent-color="deep-orange" icon="lrn:download"></simple-icon>
-        </div>
-        </body>
+render() {
+  return html`
+    <main>
+      <search-widget @value-changed="${this._handleSearchEvent}"></search-widget>
+      <div class="titles">
+        <simple-icon icon="${this.header}"></simple-icon>
+        ${this.title}
       </div>
+
+      <body>
+      <div class="object-container">
+        <a11y-collapse icon="add" heading=${this.objectHeader} class="object">
+          <div class="collapse-container">
+            <div class="description">${this.objectDescription}</div>
+            <p></p>
+            <a href=${this.objectLink} class="link">link to badge</a>
+            <p></p>
+            <p></p>
+            <p>---------------------------</p>
+            <div class="badge-creator">${this.objectBadgeCreator}</div>
+            <div class="time-eta">${this.objectTimeETA}</div>
+            <div>Steps to Earn This Badge</div>
+            <div class="steps">
+              <div class="step-icon">Icon</div>
+              <div class="step-description">${this.objectStepDescription}</div>
+              <div class="step-time">${this.objectStepTime}</div>
+            </div>
+          </div>
+        </a11y-collapse>
+        <simple-icon class ="icon" accent-color="deep-orange" icon="lrn:download"></simple-icon>
+      </div>
+      </body>
     </main>
-    `;
-  }
-  _handleInput(e) {
-    this.value = e.target.value;
-    this.dispatchEvent(new CustomEvent('value-changed', { 
-      detail: {
-        value: this.value,
-      }
-     }));
-  }
+  `;
+}
 }
 
 customElements.define('search-bar', Project2);
