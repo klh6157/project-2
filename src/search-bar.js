@@ -100,17 +100,8 @@ class Project2 extends LitElement {
 
   constructor() {
     super();
-    this.objectHeader = 'Amazon';
-    this.objectDescription = 'description for badge';
-    this.objectLink = 'https//:google.com/';
-    this.objectBadgeCreator = 'badge creator';
-    this.objectTimeETA = '4.00 hours';
-    this.objectStepIcon = 'icon';
-    this.objectStepDescription = 'Creating you first lambda function';
-    this.objectStepTime = '2.00 hours';
     this.header = 'star-border';
     this.title = 'Amazon Web Services Intro';
-    this.description = 'Details about the badge';
     this.value = "";
   }
 
@@ -130,27 +121,7 @@ class Project2 extends LitElement {
         </div>
 
         <body>
-        <div class="object-container">
-          <a11y-collapse icon="add" class="object">
-          <p slot="heading"><simple-icon icon="${this.header}"></simple-icon>${this.objectHeader}</p>
-            <div class="collapse-container">
-              <div class="description">${this.objectDescription}</div>
-              <p></p>
-              <a href=${this.objectLink} class="link">link to badge</a>
-              <p></p>
-              <p></p>
-              <p>---------------------------</p>
-              <div class="badge-creator">${this.objectBadgeCreator}</div>
-              <div class="time-eta">${this.objectTimeETA}</div>
-              <div>Steps to Earn This Badge</div>
-              <div class="steps">
-                <div class="step-icon">Icon</div>
-                <div class="step-description">${this.objectStepDescription}</div>
-                <div class="step-time">${this.objectStepTime}</div>
-              </div>
-            </div>
-          </a11y-collapse>
-        </div>
+      
         </body>
       </div>
     </main>
