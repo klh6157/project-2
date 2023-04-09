@@ -43,3 +43,4 @@ export class SearchBar extends LitElement {
                  }));
               }
         }
+        customElements.define('search-bar', SearchBar);
