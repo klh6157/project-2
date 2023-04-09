@@ -10,14 +10,15 @@ class Project2 extends LitElement {
     header: { type: String },
     title: { type: String },
     description: { type: String },
-    objectHeader: { type: String },
-    objectDescription: { type: String },
-    objectLink: { type: String },
-    objectBadgeCreator: { type: String },
-    objectTimeETA: { type: String },
-    objectStepIcon: { type: String },
-    objectStepDescription: { type: String },
-    objectStepTime: { type: String },
+    objectHeader: { type: String, Reflect: true },
+    objectDescription: { type: String, Reflect: true},
+    objectLink: { type: String, Reflect: true },
+    objectBadgeCreator: { type: String, Reflect: true },
+    objectTimeETA: { type: String, Reflect: true },
+    objectStepIcon: { type: String, Reflect: true },
+    objectStepDescription: { type: String, Reflect: true },
+    objectStepTime: { type: String, Reflect: true },
+    objectIcon: { type: String, Reflect: true },
   }
 
   static styles = css`
@@ -121,7 +122,11 @@ class Project2 extends LitElement {
         </div>
 
         <body>
+<<<<<<< Updated upstream
       
+=======
+        
+>>>>>>> Stashed changes
         </body>
       </div>
     </main>
