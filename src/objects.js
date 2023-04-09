@@ -22,7 +22,7 @@ export class Objects extends LitElement {
     }
 
     updateObjects() {
-        const address = new URL('../api/badgeList', import.meta.url).href;
+        const address = '../api/badgeList';
         fetch(address).then(response => {
             if (response.ok) {
                 return response.json();
