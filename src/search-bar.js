@@ -37,6 +37,11 @@ class Project2 extends LitElement {
       position: center;
       border-radius: 5px;
     }
+    simple-icon {
+      display: inline-block;
+      --simple-icon-height: 20px;
+      --simple-icon-width: 24px;
+    }
 
     @keyframes app-logo-spin {
       from {
@@ -120,6 +125,23 @@ class Project2 extends LitElement {
     this.description = 'Details about the badge';
     this.value = "";
   }
+  async getSearchResults(value) {
+    const response = await fetch(`https://api.github.com/search/repositories?q=${value}`);
+    const json = await fetch(address).then((response) => {
+      if (response.ok){
+        return response.json();
+      }
+      return [];
+  })
+  .then((data) => {
+    return data;
+  });
+    return results;
+}
+async _handleInput(e) {
+  const term = e.target.value;
+  this.players = await this.getSearchResults(term);
+}
 
   render() {
     return html`
@@ -165,10 +187,10 @@ class Project2 extends LitElement {
   }
   _handleInput(e) {
     this.value = e.target.value;
-    this.dispatchEvent(new CustomEvent('search', { 
-      bubbles:true,
-      composed:true,
-      detail: this.value,
+    this.dispatchEvent(new CustomEvent('value-changed', { 
+      detail: {
+        value: this.value,
+      }
      }));
   }
 }
