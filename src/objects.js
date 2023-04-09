@@ -21,15 +21,27 @@ export class Objects extends LitElement {
         this.updateObjects();
     }
 
-    async updateObjects() {
-        const address = new URL('../api/badgeList', import.meta.url).href;
-        const response = await fetch(address);
-        if (response.ok) {
-            const data = await response.json();
+    // async updateObjects() {
+    //     const address = new URL('../api/badgeList', import.meta.url).href;
+    //     const response = await fetch(address);
+    //     if (response.ok) {
+    //         const data = await response.json();
+    //         this.objects = data;
+    //     } else {
+    //         this.objects = [];
+    //     }
+    // }
+    updateObjects() {
+        const address = new URL('../api/badgeList');
+        fetch(address).then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            return [];
+        })
+        .then(data => {
             this.objects = data;
-        } else {
-            this.objects = [];
-        }
+        })
     }
     
     static get styles() {
