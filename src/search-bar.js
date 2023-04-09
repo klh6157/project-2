@@ -122,11 +122,7 @@ class Project2 extends LitElement {
         </div>
 
         <body>
-<<<<<<< Updated upstream
       
-=======
-        
->>>>>>> Stashed changes
         </body>
       </div>
     </main>
