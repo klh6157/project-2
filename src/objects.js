@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit";
 import './search-bar.js';
 import './menus.js';
+import '../api/badgeList.js';
 
 export class Objects extends LitElement {
     static get tag() {
@@ -21,7 +22,7 @@ export class Objects extends LitElement {
     }
 
     async updateObjects() {
-        const address = new URL('../assets/objects.json', import.meta.url).href;
+        const address = new URL('../api/badgeList.js', import.meta.url).href;
         const response = await fetch(address);
         if (response.ok) {
             const data = await response.json();
