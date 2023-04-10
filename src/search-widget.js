@@ -43,4 +43,4 @@ export class SearchList extends LitElement {
                  }));
               }
         }
-        customElements.define('search-list', SearchList);
+        customElements.define('search-widget', SearchList);
