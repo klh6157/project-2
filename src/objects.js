@@ -30,6 +30,16 @@ export class Objects extends LitElement {
         fetch(address).then(response => {
             if (response.ok) {
                 return response.json();
+            } else {
+                const address = fetch('../api/badgeList.json');
+                const data = new URL(address, window.location.href).href;
+                if (response.ok) {
+                    return response.json();
+                }
+                return []
+                .then(data => {
+                    this.objects = data;
+                })
             }
             return [];
         })
@@ -37,7 +47,7 @@ export class Objects extends LitElement {
             this.objects = data;
         })
     }
-      
+
     
     static get styles() {
         return css`
@@ -48,15 +58,10 @@ export class Objects extends LitElement {
                 display: flex;
                 flex-direction: column;
                 width:400px;
-                background-color: #f1f1f1;
-                margin-left: auto;
-                margin-right: auto;
             }
             .item {
                 width: 200%;
-                margin-left: auto;
-                margin-right: auto;
-                
+                margin-left: 10%;
             }
         `;
     }
