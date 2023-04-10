@@ -49,6 +49,10 @@ export class Objects extends LitElement {
                 width: 200%;
                 margin-left: 10%;
             }
+            img {
+                width: 10px;
+                height: 10px;
+            }
         `;
     }
 
