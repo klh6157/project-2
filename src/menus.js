@@ -99,7 +99,7 @@ class Project2 extends LitElement {
         <body>
         <div class="object-container">
           <a11y-collapse icon="add" class="object">
-          <p slot="heading"><img class="object badge" src="${this.objectIcon}">${this.objectHeader}</p>
+          <p slot="heading"><img src="${this.objectIcon}" class="object badge">${this.objectHeader}</p>
             <div class="collapse-container">
               <div class="description">${this.objectDescription}</div>
               <p></p>
@@ -111,7 +111,7 @@ class Project2 extends LitElement {
               <div class="time-eta">${this.objectTimeETA}</div>
               <div>Steps to Earn This Badge</div>
               <div class="steps">
-                <img class="author-badge" src="${this.objectStepIcon}">
+                <img src="${this.objectStepIcon}" class="author-badge">
                 <div class="step-description">${this.objectStepDescription}</div>
                 <div class="step-time">${this.objectStepTime}</div>
               </div>
