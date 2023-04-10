@@ -2,6 +2,9 @@ import { LitElement, html, css } from "lit";
 import './search-bar.js';
 import './menus.js';
 import '../api/badgeList.js';
+import "@lrnwebcomponents/simple-icon/simple-icon.js";
+import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
+import "@lrnwebcomponents/a11y-collapse/src/a11y-collapse.js";
 
 export class Objects extends LitElement {
     static get tag() {
