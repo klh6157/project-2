@@ -77,10 +77,6 @@ class Project2 extends LitElement {
         width: 10px;
         height: 10px;
     }
-    object-container {
-        background-color: white;
-        margin: auto;
-    }
   `;
 
   constructor() {
