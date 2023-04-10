@@ -42,8 +42,4 @@ export class SearchWidget extends LitElement {
                  }));
               }
         }
-<<<<<<< Updated upstream
-        customElements.define('search-widget', SearchList);
-=======
         customElements.define('search-widget', SearchWidget);
->>>>>>> Stashed changes
