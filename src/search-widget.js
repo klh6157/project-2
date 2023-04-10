@@ -2,7 +2,7 @@ import { LitElement, html, css } from 'lit';
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 
-export class SearchList extends LitElement {
+export class SearchWidget extends LitElement {
     static get properties() {
         return {
             value: { type: String },
@@ -24,7 +24,7 @@ export class SearchList extends LitElement {
 
             constructor() {
                 super();
-                this.value = "Default Value";
+                this.value = "Searching";
             }
 
             render() {
@@ -35,7 +35,6 @@ export class SearchList extends LitElement {
             }
             _handleInput(e) {
                 this.value = e.target.value;
-                console.log(this.value);
                 this.dispatchEvent(new CustomEvent('value-changed', { 
                   detail: {
                     value: this.value,
@@ -43,4 +42,8 @@ export class SearchList extends LitElement {
                  }));
               }
         }
+<<<<<<< Updated upstream
         customElements.define('search-widget', SearchList);
+=======
+        customElements.define('search-widget', SearchWidget);
+>>>>>>> Stashed changes
