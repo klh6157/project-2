@@ -2,6 +2,7 @@ import { LitElement, html, css } from 'lit';
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/a11y-collapse/src/a11y-collapse.js";
+import "./search-widget.js";
 
 const logo = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
 
@@ -19,6 +20,7 @@ class Project2 extends LitElement {
     objectStepDescription: { type: String, Reflect: true },
     objectStepTime: { type: String, Reflect: true },
     objectIcon: { type: String, Reflect: true },
+    players: { type: Array },
   }
 
   static styles = css`
@@ -33,10 +35,8 @@ class Project2 extends LitElement {
       font-size: 20px;
       top: 8%;
       left: 5%;
-    }
-    .search {
-      position: center;
-      border-radius: 5px;
+      margin-top: 10px;
+      margin-bottom: 10px;
     }
 
     @keyframes app-logo-spin {
@@ -75,66 +75,60 @@ class Project2 extends LitElement {
       display: block;
       
     }
-    .icon {
-      top: 5%;
-      left: 90%;
-      width: 10%;
+    .search {
+      width: 900px;
+      height: 32px;
+      border: 1px solid #f8f8f7;
+      display: block;
+      font-family: var(--badge-app-font-family);
+      padding: 8px 4px 8px 64px;
+      box-shadow: 1px 1px 5px 0.5px #bbb6b0;
+      background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath fill='%239a9691' d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center;
+      background-position: 24px;
     }
-    .steps {
-      display: flex;
-      flex-direction: row;
+    .search:focus{
+      outline: none;
+      background-color: #f8f8f7f2;
     }
-    .step-icon {
-      margin-right: 10%;
-    }
-    .step-description {
-      margin-right: 10%;
-    }
-    .step-time {
-      margin-right: 10%;
-    }
-    .collapse-container {
-      background-color: #fefeff;
-    }
-
   `;
 
   constructor() {
     super();
+    this.topic = 'Search Content, Topics, and People';
     this.header = 'star-border';
     this.title = 'Amazon Web Services Intro';
     this.value = "";
+    this.players = [];
+    this.getSearchResults().then((results) => {
+      this.players = results;
+    });
   }
+  async _handleSearchEvent(e) {
+    const term = e.detail.value;
+    this.players = await this.getSearchResults(e.detail.value);
+  }
+
+  async getSearchResults(value) {
+    const address = `/api/badgeList?search=${value}`;
+    const results = await fetch(address).then((response) => {
+      if (response.ok){
+        return response.json();
+      }
+      return [];
+  })
+  .then((data) => {
+    return data;
+  });
+  return results;
+}
+  
 
   render() {
     return html`
-      <main>
-        
-      <div class="search">
-       <simple-icon icon="icons:search"></simple-icon>
-       <input type="text" value="${this.value}" @input=${this._handleInput}/>
-        </div>
-
-        <div class="titles">
-          <simple-icon icon="${this.header}"></simple-icon>"
-          ${this.title}
-          ${this.description}
-        </div>
-
-        <body>
-      
-        </body>
-      </div>
-    </main>
+     <div class="titles">
+      <input type="text" class="search" placeholder="${this.topic}" @input="${this.searchInput}" />
+    </div>
     `;
-  }
-  _handleInput(e) {
-    this.value = e.target.value;
-    this.dispatchEvent(new CustomEvent('search', { 
-      bubbles:true,
-      composed:true,
-      detail: this.value,
-     }));
   }
 }
 
