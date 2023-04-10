@@ -48,16 +48,22 @@ export class Objects extends LitElement {
                 display: flex;
                 flex-direction: column;
                 width:400px;
+                background-color: #f1f1f1;
+                margin-left: auto;
+                margin-right: auto;
             }
             .item {
                 width: 200%;
-                margin-left: 10%;
+                margin-left: auto;
+                margin-right: auto;
+                
             }
         `;
     }
 
     render() {
         return html`
+        <h1>Amazon Web Services Intro</h1>
         <div class="wrapper">
             ${this.objects.map(
                 item => html`
