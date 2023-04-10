@@ -70,12 +70,12 @@ class Project2 extends LitElement {
     }
 
     .author-badge {
-        width: 5%;
-        height: 5%;
+        width: 10px;
+        height: 10px;
     }
     .object-badge {
-        width: 5%;
-        height: 5%;
+        width: 10px;
+        height: 10px;
     }
   `;
 
