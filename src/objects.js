@@ -49,10 +49,6 @@ export class Objects extends LitElement {
                 width: 200%;
                 margin-left: 10%;
             }
-            .icon {
-                width: 10px;
-                height: 10px;
-            }
         `;
     }
 
@@ -63,7 +59,6 @@ export class Objects extends LitElement {
             ${this.objects.map(
                 item => html`
               <div class="item">
-                
                 <menu-bar
                   objectHeader="${item.objectHeader}"
                   objectIcon="${item.objectIcon}"
@@ -74,9 +69,7 @@ export class Objects extends LitElement {
                   objectStepIcon="${item.objectStepIcon}"
                   objectStepDescription="${item.objectStepDescription}"
                   objectStepTime="${item.objectStepTime}"
-                >
-                <img class="icon" src="${item.objectIcon}" alt="objectIcon">
-            </menu-bar>
+                ></menu-bar>
               </div>
             `
             )}
