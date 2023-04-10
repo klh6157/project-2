@@ -58,7 +58,6 @@ export class Objects extends LitElement {
 
     render() {
         return html`
-        <h1>${this.menus}</h1>
         <div class="wrapper">
             ${this.objects.map(
                 item => html`
