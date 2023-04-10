@@ -47,6 +47,7 @@ export class Objects extends LitElement {
                 display: flex;
                 flex-direction: column;
                 width:400px;
+                margin: center;
             }
             .item {
                 width: 200%;
