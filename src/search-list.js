@@ -132,4 +132,4 @@ class Project2 extends LitElement {
   }
 }
 
-customElements.define('search-bar', Project2);
+customElements.define('search-lists', Project2);

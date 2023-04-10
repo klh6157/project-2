@@ -2,6 +2,7 @@ import { LitElement, html, css } from 'lit';
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 import "@lrnwebcomponents/a11y-collapse/src/a11y-collapse.js";
+import "./search-widget.js";
 
 class Project2 extends LitElement {
   static properties = {
