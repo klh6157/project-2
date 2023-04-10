@@ -30,16 +30,6 @@ export class Objects extends LitElement {
         fetch(address).then(response => {
             if (response.ok) {
                 return response.json();
-            } else {
-                const address = fetch('../api/badgeList.json');
-                const data = new URL(address, window.location.href).href;
-                if (response.ok) {
-                    return response.json();
-                }
-                return []
-                .then(data => {
-                    this.objects = data;
-                })
             }
             return [];
         })
