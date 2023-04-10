@@ -33,6 +33,7 @@ export class Objects extends LitElement {
             this.objects = data;
         })
     }
+      
     
     static get styles() {
         return css`
