@@ -81,4 +81,4 @@ export class Objects extends LitElement {
       `;
     }
 }
-customElements.define('object-bar', Objects);
+customElements.define('object-list', Objects);
