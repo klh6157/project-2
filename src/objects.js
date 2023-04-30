@@ -1,7 +1,5 @@
 import { LitElement, html, css } from "lit";
-import './search-list.js';
 import './menus.js';
-import '../api/badgeList.js';
 import "./search-widget.js";
 import "@lrnwebcomponents/simple-icon/simple-icon.js";
 import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
@@ -22,22 +20,10 @@ export class Objects extends LitElement {
         super();
         this.objects = [];
         this.menus = 'Menus';
-        this.updateObjects();
-    }
-
-    updateObjects() {
-        const address = '../api/badgeList';
-        fetch(address).then(response => {
-            if (response.ok) {
-                return response.json();
-            }
-            return [];
-        })
-        .then(data => {
-            this.objects = data;
-        })
-    }
-
+        this.getSearchResults().then((results) => {
+        this.objects = results;
+    });
+  }
     
     static get styles() {
         return css`
@@ -56,8 +42,29 @@ export class Objects extends LitElement {
         `;
     }
 
+    async getSearchResults(value='') {
+        const address = `/api/badgeList?search=${value}`;
+        const results = await fetch(address).then((response) => {
+          if (response.ok){
+            return response.json();
+          }
+          return [];
+      })
+      .then((data) => {
+        return data;
+      });
+      return results;
+    }
+  
+    async _handleSearchEvent(e) {
+      const term = e.detail.value;
+      this.objects = await this.getSearchResults(term);
+    }
+
+
     render() {
         return html`
+        <search-widget @value-changed="${this._handleSearchEvent}"></search-widget>
         <h1>Amazon Web Services Intro</h1>
         <div class="wrapper">
             ${this.objects.map(
@@ -81,4 +88,4 @@ export class Objects extends LitElement {
       `;
     }
 }
-customElements.define('object-list', Objects);
+customElements.define('objects-bar', Objects);

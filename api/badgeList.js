@@ -1,4 +1,5 @@
-export default async function handler(request, res) {
+export default async function handler(req, res) {
+    const search = req.query.search || '';
 
     var badgeList = [
         {
@@ -123,6 +124,13 @@ export default async function handler(request, res) {
             "objectStepTime": "2.00 hours"
         }
     ];
+    
+    badgeList.map((badges) => {
+        badges.index = badges.objectHeader.toLowerCase() + " " + badges.objectBadgeCreator.toLowerCase() + " " + badges.objectDescription.toLowerCase() + " " + badges.objectLink.toLowerCase();
+      });
+      badgeList = badgeList.filter((badges) => {
+        return badges.index.indexOf(search.toLowerCase()) > -1;
+      });
 
     res.setHeader('Cache-Control', 'max-age=0, s-maxage=1800');
     res.setHeader("Access-Control-Allow-Credentials", "true");
